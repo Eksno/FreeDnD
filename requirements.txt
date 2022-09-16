@@ -1,0 +1,12 @@
+flask
+python-dotenv
+waitress
+black
+PyPDF2
+psycopg2-binary
+prometheus_client
+alembic
+pycryptodome
+pyjwt
+cryptography
+marshmallow-sqlalchemy
