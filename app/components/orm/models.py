@@ -68,7 +68,9 @@ class User(Base):
         :return: integer|string
         """
         try:
-            payload = jwt.decode(auth_token, os.environ["SECRET_KEY"], algorithms="HS256")
+            payload = jwt.decode(
+                auth_token, os.environ["SECRET_KEY"], algorithms="HS256"
+            )
             return payload["sub"]
         except jwt.ExpiredSignatureError:
             return "expired"

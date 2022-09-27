@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def configure_logging():
     app_logger = logging.getLogger(__name__)
     flask_logger = logging.getLogger("flask")
@@ -31,8 +32,8 @@ def configure_logging():
 def create_app():
     app = Flask(__name__)
     app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {"/metrics": make_wsgi_app()})
-    #app.config["SQLALCHEMY_DATABASE_URI"] = get_connection_url()
-    #app.secret_key = os.environ["SECRET_KEY"]
+    # app.config["SQLALCHEMY_DATABASE_URI"] = get_connection_url()
+    # app.secret_key = os.environ["SECRET_KEY"]
 
     configure_logging()
     return app
@@ -64,11 +65,11 @@ app = create_app()
 view_metric = Counter("view", "Endpoint View", ["endpoint"])
 load_duration_metric = Summary("load_duration", "Time spent loading pages")
 
-'''
+"""
 engine = create_engine(get_connection_url())
 insp = inspect(engine)
 Session = create_session(engine)
-'''
+"""
 
 
 """ Modules """

@@ -5,8 +5,16 @@ from app.components.cipher import AESCipher
 
 cipher = AESCipher()
 
+
 def exception_str(e):
-    return str(type(e)) + ": " + str(e) + "\n" + '\n'.join(traceback.format_tb(e.__traceback__))
+    return (
+        str(type(e))
+        + ": "
+        + str(e)
+        + "\n"
+        + "\n".join(traceback.format_tb(e.__traceback__))
+    )
+
 
 def encrypt_user_dict(user_dict):
     user_dict = {
@@ -16,6 +24,7 @@ def encrypt_user_dict(user_dict):
         "password": cipher.encrypt(user_dict["password"]),
     }
     return user_dict
+
 
 def decrypt_user_dict(user_dict):
     user_dict = {

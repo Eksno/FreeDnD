@@ -3,12 +3,13 @@ from textwrap import wrap
 from flask import request, render_template, session as user_session, abort
 
 from app import app, view_metric
-#from app.components import orm
-#from app.components import cipher
-#from app.components.utils import exception_str, decrypt_user_dict
-#from app.components.cipher import AESCipher
 
-#cipher = AESCipher()
+# from app.components import orm
+# from app.components import cipher
+# from app.components.utils import exception_str, decrypt_user_dict
+# from app.components.cipher import AESCipher
+
+# cipher = AESCipher()
 
 """
 Basic Decorator Template:
@@ -59,34 +60,37 @@ def argument_decorator(argument):
 """
 
 
-
 def apply_metrics(endpoint):
-
     def decorate(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             log_string = apply_metrics.__name__ + " on " + func.__name__
-            
+
             app.logger.debug("running " + log_string)
             try:
                 return logic(endpoint, *args, **kwargs)
             except Exception as e:
-                app.logger.error("Failed " + log_string + ", Traceback - " + exception_str(e))
-                return render_template("error.html", error=log_string + " failed: " + exception_str(e))
+                app.logger.error(
+                    "Failed " + log_string + ", Traceback - " + exception_str(e)
+                )
+                return render_template(
+                    "error.html", error=log_string + " failed: " + exception_str(e)
+                )
             finally:
                 app.logger.debug(log_string + " finished")
-        
+
         def logic(endpoint, *args, **kwargs):
             view_metric.labels(endpoint=endpoint).inc()
             app.logger.info(endpoint + "loaded")
-            
+
             return func(*args, **kwargs)
 
         return wrapper
 
     return decorate
 
-'''
+
+"""
 def require_auth_token(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -165,4 +169,4 @@ def get_user(func):
         return func(False, *args, **kwargs)
 
     return wrapper
-'''
+"""

@@ -15,11 +15,6 @@
 
     <!-- JS -->
     <script src="{{ url_for('static', filename='js/jQuery.js') }}"></script>
-    <script>
-    $(function(){
-      $("#sheet").load("/sheets/brandon_fulljames");
-    });
-    </script>
 </head>
 
 <body>
@@ -28,20 +23,20 @@
         <!-- Top Bar -->
         <div class="w3-bar w3-large">
             <a href="#" class="w3-bar-item w3-button"><i class="fa fa-bars"></i></a>
-            <span class="w3-bar-item">OpenDnD</span>
+            <span class="w3-bar-item">LiberDnD</span>
         </div>
 
         <!-- Content -->
         <form action="{{ url_for('index.index') }}" method="POST" class="w3-container">
 
-            <!-- Left Panel-->
+            <!-- Left Panel -->
             <div class="w3-col w3-container m6 l5">
 
                 <!-- Title -->
                 <h1 class="w3-opacity"><b>Character Sheet Creator</b></h1>
-                
+
                 <br>
-                
+
                 <!-- Character Name -->
                 <div class="w3-card-4">
                     <header class="w3-container w3-light-grey">
@@ -49,54 +44,53 @@
                     </header>
 
                     <div class="w3-container w3-padding-16">
-                        <input class="w3-input w3-animate-input w3-xxlarge" type="text" id="character_name" name="character_name" placeholder="Character Name">
+                        <input class="w3-input w3-animate-input w3-xxlarge" type="text" placeholder="Character Name" id="character_name" name="character_name" value="{{ data['character_name'] }}">
                     </div>
                 </div>
 
                 <br>
                 <br>
-                
+
                 <!-- Basics -->
                 <div class="w3-card-4">
                     <header class="w3-container w3-light-grey">
                         <h2>Basics</h2>
                     </header>
-                    
+
                     <!-- Entries -->
                     <div class="w3-container w3-padding-16">
 
-                        <!-- Class-->
+                        <!-- Class -->
                         <div class="w3-card">
                             <header class="w3-container w3-light-grey">
                                 <h2>Class Info</h2>
                             </header>
 
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-class" name="basics-class" placeholder="Class">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Class" id="basics-class" name="basics-class" value="{{ data['basics']['class'] }}">
                                 <p class="w3-opacity"><b>Class</b></p>
                             </div>
 
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-level" name="basics-level" placeholder="Level">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Level" id="basics-level" name="basics-level" value="{{ data['basics']['level'] }}">
                                 <p class="w3-opacity"><b>Level</b></p>
                             </div>
 
                             <hr>
 
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-class2" name="basics-class2" placeholder="Class">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Class" id="basics-class2" name="basics-class2" value="{{ data['basics']['class2'] }}">
                                 <p class="w3-opacity"><b>Class 2</b></p>
                             </div>
 
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-level2" name="basics-level2" placeholder="Level">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Level" id="basics-level2" name="basics-level2" value="{{ data['basics']['level2'] }}">
                                 <p class="w3-opacity"><b>Level 2</b></p>
                             </div>
-                            
+
                             <div class="w3-container w3-dark-grey w3-block">
                                 <p><b>Class 2</b> and <b>Level 2</b> only need to be filled if multi classing.</p>
                             </div>
-
                         </div>
 
                         <br>
@@ -104,17 +98,17 @@
                         <!-- Race -->
                         <div class="w3-card">
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-race" name="basics-race" placeholder="Race">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Race" id="basics-race" name="basics-race" value="{{ data['basics']['race'] }}">
                                 <p class="w3-opacity"><b>Race</b></p>
                             </div>
                         </div>
-                        
+
                         <br>
 
                         <!-- Background -->
                         <div class="w3-card">
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-background" name="basics-background" placeholder="Background">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Background" id="basics-background" name="basics-background" value="{{ data['basics']['background'] }}">
                                 <p class="w3-opacity"><b>Background</b></p>
                             </div>
                         </div>
@@ -124,7 +118,7 @@
                         <!-- Alignment -->
                         <div class="w3-card">
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-alignment" name="basics-alignment" placeholder="Alignment">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Alignment" id="basics-alignment" name="basics-alignment" value="{{ data['basics']['alignment'] }}">
                                 <p class="w3-opacity"><b>Alignment</b></p>
                             </div>
                         </div>
@@ -134,7 +128,7 @@
                         <!-- Progression Type -->
                         <div class="w3-card">
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-progression_type" name="basics-progression_type" placeholder="Progression Type">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Progression Type" id="basics-progression_type" name="basics-progression_type" value="{{ data['basics']['progression_type'] }}">
                                 <p class="w3-opacity"><b>Progression Type</b></p>
                             </div>
                         </div>
@@ -144,24 +138,174 @@
                         <!-- Player Name -->
                         <div class="w3-card">
                             <div class="w3-container">
-                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" id="basics-player_name" name="basics-player_name" placeholder="Player Name">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Player Name" id="basics-player_name" name="basics-player_name" value="{{ data['basics']['player_name'] }}">
                                 <p class="w3-opacity"><b>Player Name</b></p>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <br>
 
+                <!-- Ability Scores -->
+                <div class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h2>Ability Scores</h2>
+                    </header>
+
+                    <!-- Entries -->
+                    <div class="w3-container w3-padding-16">
+
+                        <!-- Strength -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Strength</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Strength" id="ability-score-strength" name="ability-score-strength" value="{{ data['ability']['score']['strength'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Dexterity -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Dexterity</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Dexterity"  id="ability-score-dexterity" name="ability-score-dexterity"value="{{ data['ability']['score']['dexterity'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Constitution -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Constitution</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Constitution" id="ability-score-constitution" name="ability-score-constitution" value="{{ data['ability']['score']['constitution'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Intelligence -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Intelligence</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Intelligence" id="ability-score-intelligence" name="ability-score-intelligence" value="{{ data['ability']['score']['intelligence'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Wisdom -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Wisdom</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Wisdom" id="ability-score-wisdom" name="ability-score-wisdom" value="{{ data['ability']['score']['wisdom'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Charisma -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Charisma</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Charisma" id="ability-score-charisma" name="ability-score-charisma" value="{{ data['ability']['score']['charisma'] }}">
+                                <p class="w3-opacity"><b>Score</b></p>
+                            </div>
+                        </div>
+
+                        <div class="w3-container w3-dark-grey w3-block">
+                            <p>Note, these are the <b>Ability Scores</b> not ability modifiers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- Basics -->
+                <div class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h2>Proficiencies</h2>
+                    </header>
+
+                    <!-- Entries -->
+                    <div class="w3-container w3-padding-16">
+
+                        <!-- Saving throws -->
+                        <div class="w3-card">
+                            <header class="w3-container w3-light-grey">
+                                <h2>Class Info</h2>
+                            </header>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Class" id="basics-class" name="basics-class" value="{{ data['basics']['class'] }}">
+                                <p class="w3-opacity"><b>Class</b></p>
+                            </div>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Level" id="basics-level" name="basics-level" value="{{ data['basics']['class'] }}">
+                                <p class="w3-opacity"><b>Level</b></p>
+                            </div>
+
+                            <hr>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Class" id="basics-class2" name="basics-class2" value="{{ data['basics']['class'] }}">
+                                <p class="w3-opacity"><b>Class 2</b></p>
+                            </div>
+
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Level" id="basics-level2" name="basics-level2" value="{{ data['basics']['class'] }}">
+                                <p class="w3-opacity"><b>Level 2</b></p>
+                            </div>
+
+                            <div class="w3-container w3-dark-grey w3-block">
+                                <p><b>Class 2</b> and <b>Level 2</b> only need to be filled if multi classing.</p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- Race -->
+                        <div class="w3-card">
+                            <div class="w3-container">
+                                <input class="w3-input w3-animate-input w3-xlarge w3-margin-top" type="text" placeholder="Race" id="basics-race" name="basics-race" value="{{ data['basics']['class'] }}">
+                                <p class="w3-opacity"><b>Race</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
             <!-- Right Panel -->
             <div class="w3-col w3-container m6 l7">
 
                 <!-- Title -->
                 <h1 class="w3-opacity"><b>Preview</b></h1>
-
-                <p>Raw Data:<br>{{ raw_data }}</p>
-                
 
                 <br>
 
@@ -169,8 +313,17 @@
                     <header class="w3-container w3-light-grey w3-padding-16">
                         <button type="submit" class="w3-btn w3-dark-grey w3-block">Update Preview</button>
                     </header>
-                    
+
                     <div id="sheet"></div>
+                    <div id="error"></div>
+                    <script>
+                    $( "#sheet" ).load( "{{ sheet_query }}", function( response, status, xhr ) {
+                    if ( status == "error" ) {
+                        var msg = "Sorry but there was an error: ";
+                        $( "#error" ).html( msg + xhr.status + " " + xhr.statusText + "<br>URL:<br>{{ sheet_query }}" );
+                    }
+                    });
+                    </script>
                 </div>
             </div>
         </form>
